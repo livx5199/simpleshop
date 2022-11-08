@@ -1,13 +1,12 @@
 import React from 'react'
 import Product from './Product'
 
-function ProductList() {
+function ProductList(props) {
   return (
       <main className="ProductList">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {props.products.map((product) => (
+              <Product key={product.id} {...product} />
+          ))}
       </main>
   )
 }
