@@ -34,8 +34,13 @@ img {
 .ProductList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
   .Product {
     background-color: navy;
+    h2 {
+      height: 30px;
+      overflow: hidden;
+    }
   }
 }
 
