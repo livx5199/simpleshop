@@ -24,6 +24,22 @@ function App() {
     }
   }
 
+  function removeFromCart(id) {
+    //find and modify a product
+    setCart(oldCart => {
+      const subtracted = oldCart.map(item => {
+        if (item.id === id) {
+          return {...item, amount:item.amount - 1}
+        }
+        return item;
+      })
+
+      const filtered = subtracted.filter(item => item.amount > 0);
+      return filtered;
+
+    })
+  }
+
   //fetching product data
   const [products, setProducts] = useState([])
 
@@ -40,7 +56,7 @@ function App() {
     <div className="App">
       <Header />
       <ProductList products={products} addToCart={addToCart} />
-      <Basket products={products} cart={cart} />
+      <Basket products={products} removeFromCart={removeFromCart} cart={cart} />
     </div>
   )
 }
